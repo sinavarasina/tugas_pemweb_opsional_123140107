@@ -4,11 +4,11 @@ Repository: **[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107](
 
 ## Identitas Mahasiswa
 
-**Nama:** Varasina Farmadani
-**NIM:** 123140107
-**Mata Kuliah:** Pengembangan Aplikasi Web
-**Tugas:** Tugas Tambahan Nilai UTS (Optional)
-**Folder Utama:** `quick_tutorial/`
+**Nama:** Varasina Farmadani  
+**NIM:** 123140107  
+**Mata Kuliah:** Pengembangan Aplikasi Web  
+**Tugas:** Tugas Tambahan Nilai UTS (Optional)  
+**Folder Utama:** `quick_tutorial/`  
 
 ---
 
