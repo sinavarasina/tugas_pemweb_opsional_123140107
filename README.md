@@ -1,177 +1,165 @@
 # tugas_pemweb_opsional_123140107
 
-
----
+Repository: **[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107](https://github.com/sinavarasina/tugas_pemweb_opsional_123140107)**
 
 ## Identitas Mahasiswa
 
 **Nama:** Varasina Farmadani
 **NIM:** 123140107
-**Mata Kuliah:** Pengembangan Aplikasi Web RB
+**Mata Kuliah:** Pengembangan Aplikasi Web
 **Tugas:** Tugas Tambahan Nilai UTS (Optional)
+**Folder Utama:** `quick_tutorial/`
 
 ---
 
 # 01 — Single-File Web Applications
 
+Folder:
+[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/hello_world](https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/hello_world)
 
 
 **Analisis:**
-Aplikasi Pyramid dapat dijalankan hanya dari satu file Python menggunakan WSGI + Waitress.
-Configurator digunakan untuk mendaftarkan route dan view dalam konteks manager.
-View menerima request lalu mengembalikan Response.
-Aplikasi dijalankan langsung melalui `python app.py`.
-Model ini menunjukkan dasar alur Pyramid: request → routing → view → response.
+Aplikasi Pyramid bisa berjalan hanya dengan satu file Python.
+Routing, view, dan WSGI App ditulis langsung dalam satu berkas.
+`Configurator()` mengatur route dan view, `waitress.serve()` menjalankan server.
+Alur minimal: request → route → view → response.
 
 ---
 
 # 02 — Python Packages for Pyramid Applications
 
+Folder:
+[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/package](https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/package)
 
 
 **Analisis:**
-Aplikasi dipindahkan ke struktur package Python menggunakan direktori `tutorial/` dan `__init__.py`.
-`setup.py` mulai digunakan untuk dependency dan instalasi editable (`pip install -e .`).
-Cara ini membuat proyek mengikuti standar Python dan bisa dikelola sebagai modul terpisah.
-Kode aplikasi tetap sama, hanya cara pengemasannya yang berubah.
+Aplikasi dipindah ke struktur package Python.
+`setup.py` digunakan untuk dependency dan development mode (`pip install -e .`).
+`__init__.py` menandakan package.
+Kode aplikasi tetap sama, hanya cara pengorganisasiannya yang berubah.
 
 ---
 
 # 03 — Application Configuration with .ini Files
 
+Folder:
+[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/ini](https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/ini)
 
 
 **Analisis:**
-Konfigurasi `.ini` digunakan untuk mendefinisikan entry point WSGI (`main = tutorial:main`).
-Startup code dipindahkan ke `tutorial/__init__.py` dengan fungsi `main()`.
-Aplikasi dijalankan menggunakan `pserve development.ini --reload`.
-`.ini` mengatur server, port, logging, dan memungkinkan pemisahan konfigurasi dari kode.
+Konfigurasi dipisah ke file `.ini` dengan `paste.app_factory` → memanggil fungsi `main()`.
+Aplikasi dijalankan melalui `pserve development.ini --reload`.
+`.ini` mengatur server, port, logging, dan environment.
 
 ---
 
 # 04 — Easier Development with debugtoolbar
 
+Folder:
+[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/debugtoolbar](https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/debugtoolbar)
 
 
 **Analisis:**
-`pyramid_debugtoolbar` ditambahkan sebagai extras `[dev]` di setup.py.
-Aktivasi dilakukan melalui `.ini` dengan `pyramid.includes = pyramid_debugtoolbar`.
-Toolbar menampilkan informasi debugging, request, traceback, dan environment langsung di browser.
-Add-on Pyramid bekerja melalui mekanisme konfigurasi (`config.include()` atau `.ini`).
+`pyramid_debugtoolbar` ditambahkan melalui extras `[dev]`.
+Aktivasi di `.ini` melalui `pyramid.includes`.
+Menampilkan debugging panel berisi request, response, traceback, dan environment.
 
 ---
 
 # 05 — Unit Tests and pytest
 
+Folder:
+[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/unit_testing](https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/unit_testing)
 
 
 **Analisis:**
-Unit test ditulis dengan `pytest` dan `pyramid.testing`.
-`DummyRequest()` digunakan untuk membuat request palsu ke view.
-Test memeriksa status code, isi response, atau error.
-Import view dilakukan di dalam function test untuk menghindari side effect.
-Testing memberikan validasi cepat tanpa membuka browser.
+Unit test memakai `pytest` dan `pyramid.testing`.
+`DummyRequest()` mensimulasikan request.
+Test memeriksa status code dan data response view.
+Testing dilakukan tanpa server, hanya fungsi view.
 
 ---
 
-
 # 06 — Functional Testing with WebTest
 
+Folder:
+[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/functional_testing](https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/functional_testing)
 
 
 **Analisis:**
-Functional test dilakukan dengan `webtest.TestApp`, yang mensimulasikan HTTP request lengkap tanpa server sungguhan.
-Test memeriksa HTML yang dihasilkan aplikasi end-to-end, bukan hanya fungsi view.
-`TestApp(app)` menerima aplikasi WSGI dari `main({})` lalu memungkinkan `get('/')` untuk memeriksa response.
-Pemeriksaan HTML memakai byte-string (`b'<h1>'`) karena body response berbentuk bytes.
+WebTest mensimulasikan HTTP end-to-end tanpa menjalankan server sungguhan.
+`TestApp(app)` memanggil view melalui WSGI app untuk memeriksa HTML final.
+Functional test melengkapi unit test karena memvalidasi output sebenarnya.
 
 ---
 
 # 07 — Basic Web Handling With Views
 
+Folder:
+[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/views](https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/views)
 
 
 **Analisis:**
-View dipisah ke modul `views.py`, dan konfigurasi view dilakukan dengan dekorator `@view_config`.
-`config.scan('.views')` mencari dan mendaftarkan view secara deklaratif.
-Dua view (`home` dan `hello`) saling memberi tautan, menunjukkan pemetaan route → view menggunakan deklarasi.
-Testing memeriksa status code dan potongan HTML pada body response.
-Pendekatan declarative configuration menggantikan konfigurasi imperatif (`config.add_view`).
+View dipindah ke file `views.py`.
+Dekorator `@view_config` digunakan untuk deklarasi view.
+`config.scan('.views')` otomatis mendaftarkan seluruh view.
+Dua view saling mengarah via hyperlink.
 
 ---
 
 # 08 — HTML Generation With Templating
 
+Folder:
+[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/templating](https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/templating)
 
 
 **Analisis:**
-Templating dipindahkan dari Python string ke file template menggunakan `pyramid_chameleon`.
-Renderer ditentukan lewat `renderer='home.pt'` pada `@view_config`.
-View hanya mengembalikan dictionary data, sedangkan HTML dihasilkan oleh template.
-`pyramid.reload_templates = true` memungkinkan auto-reload template saat development.
-Testing fokus pada data return view, sementara functional test memeriksa HTML final.
+Template digenerate melalui `pyramid_chameleon`.
+Renderer ditentukan dengan `renderer='home.pt'`.
+View hanya mengembalikan dictionary data, HTML dirender dari template.
+Pengujian fokus pada data untuk unit test dan HTML untuk functional test.
 
 ---
 
 # 09 — Organizing Views With View Classes
 
+Folder:
+[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/view_classes](https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/view_classes)
 
 
 **Analisis:**
-Beberapa view digabung menjadi satu kelas menggunakan `@view_defaults` dan metode view.
-State request dibagi melalui `self.request`.
-Dekorator class-level mengurangi duplikasi konfigurasi, seperti renderer bersama.
-Unit test perlu membuat instance view class lalu memanggil metodenya.
-Functional test tetap memakai WebTest untuk memastikan output HTML sesuai.
+Beberapa view digabung dalam satu class menggunakan `@view_defaults`.
+`self.request` menyimpan request per-instance untuk berbagi state.
+Testing perlu membuat instance class sebelum memanggil metode view.
+Konfigurasi lebih rapi dan reusable dibanding fungsi terpisah.
 
 ---
 
 # 10 — Handling Web Requests and Responses
 
+Folder:
+[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/request_response](https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/request_response)
 
 
 **Analisis:**
-Pyramid memakai WebOb sebagai dasar objek request dan response.
-Route `/` mengembalikan redirect (`HTTPFound`) ke `/plain`.
-View kedua membaca parameter query (`request.params.get('name')`) dan membangun response text/plain.
-Testing memeriksa redirect (302) serta isi response untuk kasus dengan dan tanpa parameter.
-Functional test menguji perilaku HTTP sebenarnya, termasuk `?name=`.
+Pyramid menggunakan WebOb sebagai dasar request & response.
+Redirect dilakukan memakai `HTTPFound`.
+Parameter query didapat dari `request.params`.
+Testing memeriksa redirect dan response body untuk berbagai kondisi.
 
 ---
-
 
 # 11 — Dispatching URLs To Views With Routing
 
+Folder:
+[https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/routing](https://github.com/sinavarasina/tugas_pemweb_opsional_123140107/tree/main/quick_tutorial/routing)
 
 
 **Analisis:**
-Pyramid memungkinkan URL mengandung *replacement pattern* menggunakan `{}` pada deklarasi route, misalnya:
-
-```
-/howdy/{first}/{last}
-```
-
-`matchdict` pada `request` otomatis berisi nilai hasil ekstraksi pattern tersebut.
-View class dapat mengaksesnya melalui:
-
-```python
-first = self.request.matchdict['first']
-last = self.request.matchdict['last']
-```
-
-Nilai ini kemudian diteruskan ke template untuk dirender.
-Testing unit dilakukan dengan menetapkan manual:
-
-```python
-request.matchdict['first'] = 'First'
-request.matchdict['last'] = 'Last'
-```
-
-Functional test memakai WebTest memverifikasi bahwa URL seperti `/howdy/Jane/Doe` menampilkan data yang sesuai.
-
-Routing Pyramid mengharuskan route didefinisikan terpisah dari view agar urutan evaluasi route tetap eksplisit dan terkontrol.
-Jika URL tidak cocok pattern (misal `/howdy` tanpa argumen), maka route tidak match dan menghasilkan 404.
+Route menerima *replacement pattern* seperti `{first}/{last}`.
+Nilai pattern tersedia di `request.matchdict`.
+View memakai nilai itu dan meneruskannya ke template.
+Unit test memberi nilai ke `matchdict`, functional test menggunakan URL langsung.
 
 ---
-
 
