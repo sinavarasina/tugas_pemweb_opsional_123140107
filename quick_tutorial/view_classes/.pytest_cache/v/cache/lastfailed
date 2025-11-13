@@ -1,0 +1,4 @@
+{
+  "tutorial/tests.py::TutorialFunctionalTests::test_hello": true,
+  "tutorial/tests.py::TutorialFunctionalTests::test_home": true
+}
